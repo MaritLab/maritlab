@@ -7,7 +7,7 @@
   <meta name="description" content="Profesjonalne tworzenie stron internetowych, sklepów online, landing page'ów i prowadzenie mediów społecznościowych.">
   <meta name="keywords" content="strony internetowe, sklepy online, landing page, CMS, social media, MaritLab">
   <meta name="author" content="MaritLab">
-
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -25,18 +25,57 @@
 </head>
 <body class="bg-[#0F172A] text-white">
 
-  <!-- Nawigacja -->
-  <nav class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
+    <!-- Nawigacja -->
+    <nav x-data="{ open: false }" class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
     <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
       <a href="index.html" class="text-2xl font-semibold">
         <span class="text-blue-400">Mar</span><span class="text-white">it</span><span class="text-blue-400">Lab</span>
       </a>
-      <div class="space-x-6 text-sm md:text-base">
+
+      <!-- Desktop menu -->
+      <div class="space-x-6 text-sm md:text-base hidden md:flex">
         <a href="oferta.html" class="hover:text-blue-400">Oferta</a>
         <a href="realizacje.html" class="hover:text-blue-400">Realizacje</a>
         <a href="o_nas.html" class="hover:text-blue-400">O nas</a>
         <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
       </div>
+
+      <!-- Hamburger -->
+      <button @click="open = !open" class="md:hidden text-white focus:outline-none z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M4 6h16M4 12h16M4 18h16" />
+          <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Mobile sidebar -->
+      <div 
+        x-show="open"
+        x-transition:enter="transition duration-300 ease-out"
+        x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition duration-200 ease-in"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="-translate-x-full"
+        class="fixed top-0 left-0 w-64 h-full bg-[#1E293B] text-white shadow-lg p-6 flex flex-col space-y-4 z-40 md:hidden"
+        style="display: none;"
+        @click.away="open = false"
+      >
+        <a href="oferta.html" class="hover:text-blue-400">Oferta</a>
+        <a href="realizacje.html" class="hover:text-blue-400">Realizacje</a>
+        <a href="o_nas.html" class="hover:text-blue-400">O nas</a>
+        <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
+      </div>
+
+      <!-- Tło za menu -->
+      <div 
+        x-show="open" 
+        x-transition.opacity 
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+        @click="open = false"
+      ></div>
     </div>
   </nav>
 
@@ -84,7 +123,7 @@
   <section class="bg-blue-600 py-16 text-center text-white">
     <h2 class="text-3xl font-bold mb-4">Widzisz tu rozwiązanie dopasowane do Twoich oczekiwań?</h2>
     <p class="mb-6 text-lg">Umów się na indywidualną wycenę</p>
-    <a href="kontakt.html" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Napisz do nas</a>
+    <a href="kontakt.html" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">Skontaktuj się z nami</a>
   </section>
 
   <!-- Stopka -->

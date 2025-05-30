@@ -6,6 +6,7 @@
   <title>Strona Główna – MaritLab</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -23,17 +24,56 @@
 <body class="bg-[#0F172A] text-white">
 
   <!-- Nawigacja -->
-  <nav class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
+  <nav x-data="{ open: false }" class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
     <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
       <a href="index.html" class="text-2xl font-semibold">
         <span class="text-blue-400">Mar</span><span class="text-white">it</span><span class="text-blue-400">Lab</span>
       </a>
-      <div class="space-x-6 text-sm md:text-base">
+
+      <div class="space-x-6 text-sm md:text-base hidden md:flex">
         <a href="oferta.html" class="hover:text-blue-400">Oferta</a>
         <a href="realizacje.html" class="hover:text-blue-400">Realizacje</a>
         <a href="o_nas.html" class="hover:text-blue-400">O nas</a>
         <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
       </div>
+
+      <button @click="open = !open" class="md:hidden text-white focus:outline-none z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <template x-if="!open">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16" />
+          </template>
+          <template x-if="open">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12" />
+          </template>
+        </svg>
+      </button>
+
+      <div 
+        x-show="open"
+        x-transition:enter="transition duration-300 ease-out"
+        x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition duration-200 ease-in"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="-translate-x-full"
+        class="fixed top-0 left-0 w-64 h-full bg-[#1E293B] text-white shadow-lg p-6 flex flex-col space-y-4 z-40 md:hidden"
+        style="display: none;"
+        @click.away="open = false"
+      >
+        <a href="oferta.html" class="hover:text-blue-400">Oferta</a>
+        <a href="realizacje.html" class="hover:text-blue-400">Realizacje</a>
+        <a href="o_nas.html" class="hover:text-blue-400">O nas</a>
+        <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
+      </div>
+
+      <div 
+        x-show="open" 
+        x-transition.opacity 
+        class="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+        @click="open = false"
+      ></div>
     </div>
   </nav>
 
@@ -51,16 +91,21 @@
     </section>
 
     <!-- ZAPROSZENIE DO PODSTRON -->
-    <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
-      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center">
+    <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-12">
+      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center intro-card">
         <h2 class="text-2xl font-semibold text-blue-400 mb-4">Nasza oferta</h2>
         <p class="text-gray-300 mb-4">Dowiedz się więcej o usługach, które świadczymy dla firm z różnych branż. Oferujemy kompleksowe podejście do projektowania i wdrażania stron internetowych.</p>
         <a href="oferta.html" class="text-blue-400 hover:underline font-semibold">Przejdź do oferty →</a>
       </div>
-      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center">
+      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center intro-card">
         <h2 class="text-2xl font-semibold text-blue-400 mb-4">Nasze realizacje</h2>
         <p class="text-gray-300 mb-4">Zapoznaj się z wybranymi projektami, które zrealizowaliśmy dla naszych klientów. Każda realizacja to przykład funkcjonalności i dopracowanego designu.</p>
         <a href="realizacje.html" class="text-blue-400 hover:underline font-semibold">Zobacz realizacje →</a>
+      </div>
+      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center intro-card">
+        <h2 class="text-2xl font-semibold text-blue-400 mb-4">Poznaj nas lepiej</h2>
+        <p class="text-gray-300 mb-4">Dowiedz się, kim jesteśmy, co nas napędza i jak podchodzimy do współpracy z klientami. Bo technologia to nie wszystko – liczy się człowiek.</p>
+        <a href="o_nas.html" class="text-blue-400 hover:underline font-semibold">O nas →</a>
       </div>
     </section>
 
@@ -75,8 +120,11 @@
 
   </main>
 
+  <!-- GSAP Animacje -->
   <script>
     gsap.registerPlugin(ScrollTrigger);
+
+    // Animacja wejścia dla sekcji
     gsap.from("section", {
       opacity: 0,
       y: 50,
@@ -86,6 +134,20 @@
         trigger: "section",
         start: "top 90%",
       },
+    });
+
+    // Animacja dla trzech kafelków intro
+    gsap.utils.toArray(".intro-card").forEach((card, i) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        delay: i * 0.2,
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        }
+      });
     });
   </script>
 
