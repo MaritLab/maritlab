@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Strona Główna</title>
+  <title>Strona Główna – MaritLab</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
@@ -22,139 +22,93 @@
 </head>
 <body class="bg-[#0F172A] text-white">
 
-    <!-- Nawigacja -->
-    <nav class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
-        <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
-        <a href="/" class="text-2xl font-semibold">
-            <span class="text-blue-400">Mar</span><span class="text-white">it</span><span class="text-blue-400">Lab</span>
-        </a>
-        <div class="space-x-6 text-sm md:text-base">
-            <a href="{% url 'uslugi' %}" class="hover:text-blue-400">Usługi</a>
-            <a href="{% url 'realizacje' %}" class="hover:text-blue-400">Realizacje</a>
-            <a href="{% url 'faq' %}" class="hover:text-blue-400">FAQ</a>
-            <a href="{% url 'kontakt' %}" class="hover:text-blue-400">Kontakt</a>
-            <a href="{% url 'o_nas' %}" class="hover:text-blue-400">O nas</a>
-        </div>
-        </div>
-    </nav>
+  <!-- Nawigacja -->
+  <nav class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
+    <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-semibold">
+        <span class="text-blue-400">Mar</span><span class="text-white">it</span><span class="text-blue-400">Lab</span>
+      </a>
+      <div class="space-x-6 text-sm md:text-base">
+        <a href="oferta.html" class="hover:text-blue-400">Oferta</a>
+        <a href="realizacje.html" class="hover:text-blue-400">Realizacje</a>
+        <a href="o_nas.html" class="hover:text-blue-400">O nas</a>
+        <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Treść -->
-    <main class="pt-20 overflow-hidden">
+  <!-- Treść główna -->
+  <main class="pt-20 overflow-hidden">
 
     <!-- HERO -->
     <section class="min-h-[80vh] flex flex-col justify-center items-center text-center px-6 relative">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
         Nowoczesne strony internetowe<br><span class="text-blue-400">dla firm z charakterem</span>
-        </h1>
-        <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl">
-        Projektujemy strony, które działają – szybko, responsywnie i z myślą o Twoim kliencie.
-        </p>
-        <div class="flex gap-4 flex-wrap justify-center">
-        <a href="{% url 'uslugi' %}" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-2xl shadow-md font-semibold transition">
-            Zobacz ofertę
-        </a>
-        <a href="{% url 'kontakt' %}" class="bg-white text-[#0F172A] hover:bg-gray-100 px-6 py-3 rounded-2xl font-semibold transition">
-            Skontaktuj się
-        </a>
-        </div>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-2xl">
+        Projektujemy rozwiązania, które są szybkie, estetyczne i zoptymalizowane pod kątem użytkownika.
+      </p>
     </section>
 
-    <!-- OFERTA -->
-    <section class="max-w-6xl mx-auto px-6 py-20">
-        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Nasza oferta</h2>
-        <div class="grid md:grid-cols-3 gap-8 text-center">
-        <div class="bg-[#1E293B] p-6 rounded-xl shadow-lg">
-            <i class="fas fa-laptop-code text-4xl mb-4 text-blue-400"></i>
-            <h3 class="text-xl font-semibold mb-2">Strony WWW</h3>
-            <p>Profesjonalne witryny firmowe – responsywne, szybkie i estetyczne.</p>
-        </div>
-        <div class="bg-[#1E293B] p-6 rounded-xl shadow-lg">
-            <i class="fas fa-search text-4xl mb-4 text-blue-400"></i>
-            <h3 class="text-xl font-semibold mb-2">SEO</h3>
-            <p>Optymalizacja widoczności w Google, żeby Twoi klienci Cię znaleźli.</p>
-        </div>
-        <div class="bg-[#1E293B] p-6 rounded-xl shadow-lg">
-            <i class="fas fa-tools text-4xl mb-4 text-blue-400"></i>
-            <h3 class="text-xl font-semibold mb-2">Opieka nad stroną</h3>
-            <p>Aktualizacje, bezpieczeństwo i wprowadzanie zmian – na bieżąco.</p>
-        </div>
-        </div>
-        <div class="text-center mt-10">
-        <a href="{% url 'uslugi' %}" class="text-blue-400 hover:underline text-lg font-semibold">Zobacz pełną ofertę →</a>
-        </div>
-    </section>
-
-    <!-- REALIZACJE -->
-    <section class="bg-[#1E293B] py-20">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-10">Nasze realizacje</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-[#0F172A] rounded-xl overflow-hidden shadow-md">
-            <img src="/static/img/projekt1.jpg" alt="Projekt 1" class="w-full h-48 object-cover">
-            <p class="p-4">Strona dla lokalnego hydraulika z systemem rezerwacji.</p>
-            </div>
-            <div class="bg-[#0F172A] rounded-xl overflow-hidden shadow-md">
-            <img src="/static/img/projekt2.jpg" alt="Projekt 2" class="w-full h-48 object-cover">
-            <p class="p-4">Portfolio fotografa – minimalizm i styl.</p>
-            </div>
-            <div class="bg-[#0F172A] rounded-xl overflow-hidden shadow-md">
-            <img src="/static/img/projekt3.jpg" alt="Projekt 3" class="w-full h-48 object-cover">
-            <p class="p-4">Landing page kampanii reklamowej z integracją API.</p>
-            </div>
-        </div>
-        <div class="mt-10">
-            <a href="{% url 'realizacje' %}" class="text-blue-400 hover:underline text-lg font-semibold">Zobacz więcej realizacji →</a>
-        </div>
-        </div>
+    <!-- ZAPROSZENIE DO PODSTRON -->
+    <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12">
+      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center">
+        <h2 class="text-2xl font-semibold text-blue-400 mb-4">Nasza oferta</h2>
+        <p class="text-gray-300 mb-4">Dowiedz się więcej o usługach, które świadczymy dla firm z różnych branż. Oferujemy kompleksowe podejście do projektowania i wdrażania stron internetowych.</p>
+        <a href="oferta.html" class="text-blue-400 hover:underline font-semibold">Przejdź do oferty →</a>
+      </div>
+      <div class="bg-[#1E293B] p-8 rounded-2xl shadow-lg text-center">
+        <h2 class="text-2xl font-semibold text-blue-400 mb-4">Nasze realizacje</h2>
+        <p class="text-gray-300 mb-4">Zapoznaj się z wybranymi projektami, które zrealizowaliśmy dla naszych klientów. Każda realizacja to przykład funkcjonalności i dopracowanego designu.</p>
+        <a href="realizacje.html" class="text-blue-400 hover:underline font-semibold">Zobacz realizacje →</a>
+      </div>
     </section>
 
     <!-- CTA KONTAKT -->
     <section class="py-20 text-center px-6">
-        <h2 class="text-3xl md:text-4xl font-bold mb-6">Masz pomysł na stronę?</h2>
-        <p class="text-lg text-gray-300 mb-8">Zróbmy to razem – odezwij się do nas i zrealizuj projekt bez stresu.</p>
-        <a href="{% url 'kontakt' %}" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold transition">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Zainteresowany współpracą?</h2>
+      <p class="text-lg text-gray-300 mb-8">Skontaktuj się z nami, aby wspólnie stworzyć nowoczesną i skuteczną stronę internetową.</p>
+      <a href="kontakt.html" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold transition">
         Skontaktuj się
-        </a>
+      </a>
     </section>
 
-    </main>
+  </main>
 
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.from("section", {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: "section",
-      start: "top 90%",
-    },
-  });
-</script>
-
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from("section", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: "section",
+        start: "top 90%",
+      },
+    });
+  </script>
 
   <!-- Stopka -->
   <footer class="bg-[#1E293B] text-gray-400 py-10 mt-20">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
       <div>
         <h3 class="text-white font-semibold text-lg mb-2">Marit Lab</h3>
-        <p>Tworzymy nowoczesne strony z myślą o UX, SEO i responsywności. Profesjonalnie i bez zbędnego gadania.</p>
+        <p>Strony internetowe tworzone z myślą o wygodzie użytkownika i czytelnym przekazie.</p>
       </div>
       <div>
         <h4 class="text-white font-semibold mb-2">Linki</h4>
         <ul class="space-y-1">
-          <li><a href="{% url 'uslugi' %}" class="hover:text-white">Usługi</a></li>
-          <li><a href="{% url 'realizacje' %}" class="hover:text-white">Realizacje</a></li>
-          <li><a href="{% url 'faq' %}" class="hover:text-white">FAQ</a></li>
-          <li><a href="{% url 'kontakt' %}" class="hover:text-white">Kontakt</a></li>
-          <li><a href="{% url 'o_nas' %}" class="hover:text-white">O nas</a></li>
+          <li><a href="oferta.html" class="hover:text-white">Oferta</a></li>
+          <li><a href="realizacje.html" class="hover:text-white">Realizacje</a></li>
+          <li><a href="o_nas.html" class="hover:text-white">O nas</a></li>
+          <li><a href="kontakt.html" class="hover:text-white">Kontakt</a></li>
         </ul>
       </div>
       <div>
         <h4 class="text-white font-semibold mb-2">Kontakt</h4>
-        <p>Email: <a href="" class="text-blue-400 hover:underline"></a></p>
-        <p>Tel: </p>
+        <p>Email: <a href="mailto:kontakt@maritlab.pl" class="text-blue-400 hover:underline">kontakt@maritlab.pl</a></p>
+        <p>Tel: +48 888 264 446</p>
       </div>
     </div>
     <div class="text-center text-xs mt-8">&copy; 2025 MaritLab. Wszelkie prawa zastrzeżone.</div>
