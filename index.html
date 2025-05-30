@@ -23,13 +23,14 @@
 </head>
 <body class="bg-[#0F172A] text-white">
 
-  <!-- Nawigacja -->
-  <nav x-data="{ open: false }" class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
+    <!-- Nawigacja -->
+    <nav x-data="{ open: false }" class="fixed top-0 left-0 w-full h-20 bg-[#0F172A] z-50">
     <div class="max-w-6xl mx-auto px-4 h-full flex justify-between items-center">
       <a href="index.html" class="text-2xl font-semibold">
         <span class="text-blue-400">Mar</span><span class="text-white">it</span><span class="text-blue-400">Lab</span>
       </a>
 
+      <!-- Desktop menu -->
       <div class="space-x-6 text-sm md:text-base hidden md:flex">
         <a href="oferta.html" class="hover:text-blue-400">Oferta</a>
         <a href="realizacje.html" class="hover:text-blue-400">Realizacje</a>
@@ -37,19 +38,17 @@
         <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
       </div>
 
+      <!-- Hamburger -->
       <button @click="open = !open" class="md:hidden text-white focus:outline-none z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <template x-if="!open">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16" />
-          </template>
-          <template x-if="open">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12" />
-          </template>
+          <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M4 6h16M4 12h16M4 18h16" />
+          <path x-show="open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
 
+      <!-- Mobile sidebar -->
       <div 
         x-show="open"
         x-transition:enter="transition duration-300 ease-out"
@@ -68,6 +67,7 @@
         <a href="kontakt.html" class="hover:text-blue-400">Kontakt</a>
       </div>
 
+      <!-- Tło za menu -->
       <div 
         x-show="open" 
         x-transition.opacity 
